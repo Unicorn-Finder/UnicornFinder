@@ -10,6 +10,7 @@ import javax.persistence.*;
 @Table(name = "company_detail")
 public class CompanyDetail {
     @Id @GeneratedValue
+    @Column(name = "detail_id")
     private Long id;
 
     @OneToOne
