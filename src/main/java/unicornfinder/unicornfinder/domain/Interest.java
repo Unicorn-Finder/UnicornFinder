@@ -12,12 +12,10 @@ public class Interest {
     @Column(name = "interest_id")
     private Long id;
 
-    @Column(name = "member_id")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member memberId;
 
-    @Column(name ="company_id")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id")
     private Company companyId;
