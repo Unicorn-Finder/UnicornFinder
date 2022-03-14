@@ -33,12 +33,12 @@ public class MemberRepository {
                 .getResultList();
     }
 
-    //중복된 이메일 있나 검색 없으면 0 있으면 1
+    //중복 이메일 검색
     public Optional<Member> findByEmail(String email){
-        Member member = em.createQuery("select m from Member m where m.email = :email", Member.class)
+        List<Member> member = em.createQuery("select m from Member m where m.email = :email", Member.class)
                 .setParameter("email", email)
-                .getSingleResult();
-        return Optional.ofNullable(member);
+                .getResultList();
+        return member.stream().findAny();
     }
 }
 
