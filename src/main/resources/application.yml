@@ -4,6 +4,8 @@ spring:
     username: sa
     password:
     driver-class-name: org.h2.Driver
+  profiles:
+    include: oauth
 
   jpa:
     hibernate:
@@ -15,4 +17,6 @@ spring:
 
 logging.level:
   org.hibernate.SQL: debug
+  org.springframework: debug
 #  org.hibernate.type: trace
+
