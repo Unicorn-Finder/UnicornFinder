@@ -13,13 +13,13 @@ import java.util.Optional;
 
 @Slf4j
 @Repository
-@Transactional
 @RequiredArgsConstructor
 public class MemberRepository {
 
     private final EntityManager em;
 
-    public Member save (Member member) {
+    @Transactional //service에 넣어야하나? SimpleJpaRepository 에는 트랜잭셔널 있다.
+    public Member save (Member member) { //기존에 있다면 merge로 수정해야한다.
         em.persist(member);
         return member;
     }

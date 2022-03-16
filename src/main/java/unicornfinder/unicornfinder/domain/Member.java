@@ -36,6 +36,7 @@ public class Member {
         this.role = role;
     }
 
+    //name 수정
     public Member update(String name) {
         log.info("update name");
         this.name = name;

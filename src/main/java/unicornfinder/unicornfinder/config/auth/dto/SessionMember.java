@@ -6,11 +6,12 @@ import unicornfinder.unicornfinder.domain.Member;
 import java.io.Serializable;
 
 @Getter
-public class SessionUser implements Serializable {
+//Serializable로 직렬화를 구현했다.
+public class SessionMember implements Serializable {
     private String name;
     private String email;
 
-    public SessionUser(Member member) {
+    public SessionMember(Member member) {
         this.name = member.getName();
         this.email = member.getEmail();
     }

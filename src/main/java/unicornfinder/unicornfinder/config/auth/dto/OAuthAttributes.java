@@ -22,16 +22,13 @@ public class OAuthAttributes {
         this.nameAttributeKey = nameAttributeKey;
         this.name = name;
         this.email = email;
-        log.info("OAuthAttributes");
     }
 
     public static OAuthAttributes of(String registrationId, String userNameAttributeName, Map<String, Object> attributes) {
-        log.info("of1");
         return ofGoogle(userNameAttributeName, attributes);
     }
 
     private static OAuthAttributes ofGoogle(String userNameAttributeName, Map<String, Object> attributes) {
-        log.info("ofGoogle1");
         return OAuthAttributes.builder()
                 .name((String) attributes.get("name"))
                 .email((String) attributes.get("email"))
@@ -40,12 +37,12 @@ public class OAuthAttributes {
                 .build();
     }
 
+    //Member entity 생성
     public Member toEntity() {
-        log.info("toEntity");
         return Member.builder()
                 .name(name)
                 .email(email)
-                .role(Role.GUEST)
+                .role(Role.USER)
                 .build();
     }
 }
