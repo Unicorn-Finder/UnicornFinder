@@ -38,7 +38,7 @@ public class CompanyRepository {
     public List<Company> findByName_Product(String search){
 
         List<Company> companyList = em.createQuery("select c from Company c" +
-                "where c.name = :search or c.product = :search", Company.class)
+                "where c.name like %:search% or c.product like %:search%", Company.class)
                 .setParameter("search", search)
                 .getResultList();
 
