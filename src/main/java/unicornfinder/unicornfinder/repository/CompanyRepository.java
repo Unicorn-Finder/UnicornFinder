@@ -1,18 +1,18 @@
 package unicornfinder.unicornfinder.repository;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import unicornfinder.unicornfinder.domain.Company;
 import unicornfinder.unicornfinder.domain.Interest;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
+@RequiredArgsConstructor
 public class CompanyRepository {
 
-    @PersistenceContext
-    private EntityManager em;
+    private final EntityManager em;
 
     //company 전체 조회
     public List<Company> findAll(){
