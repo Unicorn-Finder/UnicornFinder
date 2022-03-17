@@ -30,4 +30,8 @@ public class Company extends BaseTimeEntity{
 
     private String register_id; // 등록한 사람
     private String update_id; // 수정한 사람
+
+    public void setCount(int count) {
+        this.count = count;
+    }
 }
