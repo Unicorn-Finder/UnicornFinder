@@ -4,7 +4,7 @@
     <ul class="nav nav-pills pull-right">
         <li><a href="/">Home</a></li>
         <div th:if="${session.member}!=null">
-            <a th:if="${session.member.role.toString().equals('USER')}" href="/companies/new">
+            <a th:if="${session.member.role.toString().equals('ADMIN')}" href="/companies/new">
                 회사등록
             </a>
         </div>

@@ -26,6 +26,7 @@ public class CompanyService {
     }
 
     //company저장
+    @Transactional
     public Long saveCompany(Company company){
         Company c = companyRepository.saveCompany(company);
         return c.getId();

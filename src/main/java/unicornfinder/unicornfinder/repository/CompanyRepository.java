@@ -54,6 +54,7 @@ public class CompanyRepository {
 
     //company 등록
     public Company saveCompany(Company company){
+        System.out.println("company id : "+company.getId());
         if(company.getId()==null) {
             em.persist(company);
         }

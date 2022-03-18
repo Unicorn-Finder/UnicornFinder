@@ -91,4 +91,12 @@ class CompanyServiceTest {
                     "id : "+c.getId()+" "+
                     "name : "+c.getName()+" ");
     }
+
+    @Test
+    public void 저장(){
+        Company company = new Company();
+        company.setName("우아한 형제들");
+        company.setProduct("배달의 민족");
+        companyService.saveCompany(company);
+    }
 }
