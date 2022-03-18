@@ -3,12 +3,6 @@
 <div class="header" th:fragment="bodyHeader">
     <ul class="nav nav-pills pull-right">
         <li><a href="/">Home</a></li>
-        <div th:if="${session.member}!=null">
-            <a th:if="${session.member.role.toString().equals('ADMIN')}" href="/companies/new">
-                회사등록
-            </a>
-        </div>
-
     </ul>
     <a href="/"><h3 class="text-muted">🦄 Unicorn Finder</h3></a>
 </div>
