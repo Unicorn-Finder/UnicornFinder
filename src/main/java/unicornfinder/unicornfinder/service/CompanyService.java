@@ -24,4 +24,10 @@ public class CompanyService {
     public List<Company> searchCompanies(String search){
         return companyRepository.findByName_Product(search);
     }
+
+    //company저장
+    public Long saveCompany(Company company){
+        Company c = companyRepository.saveCompany(company);
+        return c.getId();
+    }
 }

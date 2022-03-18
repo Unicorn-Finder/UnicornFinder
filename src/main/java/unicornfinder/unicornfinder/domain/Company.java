@@ -34,4 +34,32 @@ public class Company extends BaseTimeEntity{
     public void setCount(int count) {
         this.count = count;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setProduct(String product) {
+        this.product = product;
+    }
+
+    public void setInvest(int invest) {
+        this.invest = invest;
+    }
+
+    public void setRound(Round round) {
+        this.round = round;
+    }
+
+    public void setDomain(String domain) {
+        this.domain = domain;
+    }
+
+    public void setEmployee(int employee) {
+        this.employee = employee;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
 }

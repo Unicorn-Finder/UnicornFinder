@@ -2,6 +2,7 @@ package unicornfinder.unicornfinder.repository;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import unicornfinder.unicornfinder.domain.Company;
 import unicornfinder.unicornfinder.domain.Interest;
 
@@ -51,9 +52,15 @@ public class CompanyRepository {
         return companyList;
     }
 
-    //company 등록(임시테스트용)
-    public void save(Company company){
-        em.persist(company);
+    //company 등록
+    public Company saveCompany(Company company){
+        if(company.getId()==null) {
+            em.persist(company);
+        }
+        else{
+            em.merge(company);
+        }
+        return company;
     }
 
     //interest 등로 임시테스트용)
