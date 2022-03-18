@@ -25,7 +25,7 @@ public class Member {
     @Enumerated(EnumType.STRING)
     private Role role; //관리자, 일반사용자 구분(ADMIN, USER)
 
-    @OneToMany(mappedBy = "memberId")
+    @OneToMany(mappedBy = "member") //변수명 변경으로 인한 수정
     private List<Interest> interests;
 
     // 생성자
