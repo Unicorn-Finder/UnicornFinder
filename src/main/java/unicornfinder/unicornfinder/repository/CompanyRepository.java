@@ -21,24 +21,24 @@ public class CompanyRepository {
         em.persist(company);
     }
 
-    public Company findOne(Long id){
+    public Company findOne(Long id) {
         return em.find(Company.class, id);
-
+    }
     //company 전체 조회
     public List<Company> findAll(){
         List<Company> companyList = em.createQuery("select c from Company c", Company.class)
                 .getResultList();
         //조회한 company에 count값 설정해주기
         for(Company c : companyList){
-            c.setCount(setCount(c.getId()));
+            c.setCount(findCountById(c.getId()));
         }
         return companyList;
     }
 
-    //company count 값 설정
-    private int setCount(Long id) {
+    //company count 값 설정  findCountById
+    private int findCountById(Long id) {
         List<Interest> interests = em.createQuery("select i from Interest i " +
-                "where i.companyId.id = :companyid", Interest.class)
+                "where i.company.id = :companyid", Interest.class)
                 .setParameter("companyid", id)
                 .getResultList();
         return interests.size();
@@ -55,7 +55,7 @@ public class CompanyRepository {
 
         //조회한 company에 count값 설정해주기
         for(Company c : companyList){
-            c.setCount(setCount(c.getId()));
+            c.setCount(findCountById(c.getId()));
         }
 
         return companyList;

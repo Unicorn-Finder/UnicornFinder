@@ -34,8 +34,8 @@ public class Company extends BaseTimeEntity{
 
     private int count; //관심수
 
-    private String register_id; // 등록한 사람
-    private String update_id; // 수정한 사람
+    private String register_email; // 등록한 사람
+    private String update_email; // 수정한 사람
 
     //비즈니스 로직
     public void addInterest(){
@@ -61,6 +61,10 @@ public class Company extends BaseTimeEntity{
     }
 
     //setter
+    public void setCount(int count) {
+        this.count = count;
+    }
+
     private void setCompany(String name, String product, long invest, Round round, String domain, int employee, Location location) {
         this.name = name;
         this.product = product;
