@@ -24,13 +24,13 @@
         <table id="company_table" class="table table-hover">
             <thead>
             <tr>
-                <th>투자 금액</th>
+                <th class="skip-filter">투자 금액</th>
                 <th>투자 단계</th>
                 <th>회사명</th>
                 <th>서비스</th>
                 <th>분야</th>
                 <th>위치</th>
-                <th>직원수</th>
+                <th class="skip-filter">직원수</th>
                 <th>관심수</th>
             </tr>
             </thead>
@@ -52,6 +52,7 @@
 </div> <!-- /container -->
 
 <!--검색 기능-->
+<script src="/js/ddtf.js"></script>
 <script>
     $(document).ready(function() {
             $("#search").keyup(function() {
@@ -62,6 +63,8 @@
                 var temp = $("#company_table > tbody > tr > td:nth-child(8n+4):contains('" + k + "')");
                 $(temp).parent().show();
             })
+            //table 헤드 필터 추가
+            $("#company_table").ddTableFilter();
         })
 </script>
 </body>
