@@ -16,9 +16,12 @@
         <a th:if="${memberName != null}" href="/logout" class="btn btn-info active" role="button">Logout</a>
     </div>
 
+    <div class="col-3" style="float : right; margin : 10px;">
+        <input type="text" id="search" class="form-control">
+    </div>
     <!-- company 조회-->
     <div>
-        <table class="table table-hover">
+        <table id="company_table" class="table table-hover">
             <thead>
             <tr>
                 <th>투자 금액</th>
@@ -35,8 +38,8 @@
             <tr th:each="company : ${companies}">
                 <td th:text="${company.invest}"></td>
                 <td th:text="${company.round}"></td>
-                <td th:text="${company.name}"></td>
-                <td th:text="${company.product}"></td>
+                <td class = "searchField" th:text="${company.name}"></td>
+                <td class = "searchField" th:text="${company.product}"></td>
                 <td th:text="${company.domain}"></td>
                 <td th:text="${company.location}"></td>
                 <td th:text="${company.employee}"></td>
@@ -47,5 +50,19 @@
     </div>
     <div th:replace="fragments/footer :: footer" />
 </div> <!-- /container -->
+
+<!--검색 기능-->
+<script>
+    $(document).ready(function() {
+            $("#search").keyup(function() {
+                var k = $(this).val();
+                $("#company_table > tbody > tr").hide();
+                var temp = $("#company_table > tbody > tr > td:nth-child(8n+3):contains('" + k + "')");
+                $(temp).parent().show();
+                var temp = $("#company_table > tbody > tr > td:nth-child(8n+4):contains('" + k + "')");
+                $(temp).parent().show();
+            })
+        })
+</script>
 </body>
 </html>
