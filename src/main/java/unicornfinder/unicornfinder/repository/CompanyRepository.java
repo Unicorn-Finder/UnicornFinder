@@ -2,6 +2,7 @@ package unicornfinder.unicornfinder.repository;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+
 import org.springframework.transaction.annotation.Transactional;
 import unicornfinder.unicornfinder.domain.Company;
 import unicornfinder.unicornfinder.domain.Interest;
@@ -9,11 +10,19 @@ import unicornfinder.unicornfinder.domain.Interest;
 import javax.persistence.EntityManager;
 import java.util.List;
 
+
 @Repository
 @RequiredArgsConstructor
 public class CompanyRepository {
 
     private final EntityManager em;
+
+    public void save(Company company){
+        em.persist(company);
+    }
+
+    public Company findOne(Long id){
+        return em.find(Company.class, id);
 
     //company 전체 조회
     public List<Company> findAll(){
