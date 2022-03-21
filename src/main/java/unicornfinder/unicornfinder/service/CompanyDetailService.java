@@ -22,11 +22,13 @@ public class CompanyDetailService {
     public void saveCompanyDetail(CompanyDetail cd){
         cdRepository.save(cd);
     }
-
-    public void updateCompanyDetail(Long id, String blog, String welfare, String etc, String location){
+    /** info 추가*/
+    public void updateCompanyDetail(Long id, String info, String blog, String welfare, String etc, String location){
         CompanyDetail cd = cdRepository.findOne(id);
-        cd.changeDetail(blog, welfare, etc, location);
+        cd.changeDetail(info, blog, welfare, etc, location);
     }
+
+
 
     public CompanyDetail findOne(Long id){
         return cdRepository.findOne(id);
