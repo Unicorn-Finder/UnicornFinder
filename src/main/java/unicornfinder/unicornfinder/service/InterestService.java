@@ -31,9 +31,19 @@ public class InterestService {
         return interest.getId();
     }
     //관심해제
-    public void cancelInterest(Long interestId){
-        Interest interest = interestRepository.findOne(interestId);
+    public void cancelInterest(Long memberId, Long companyId){
+        Interest interest = interestRepository.findInterestByMemberCompany(memberId, companyId).get();
+        Long interestId = interest.getId();
+
         interest.cancel();
         interestRepository.cancel(interestId);
+    }
+
+    //관심인지 유무 체크
+    public int checkInterest(Long memberId, Long companyId){
+        Interest interest = interestRepository.findInterestByMemberCompany(memberId, companyId).orElse(null);
+        if (interest == null)
+            return 0;
+        return 1;
     }
 }
