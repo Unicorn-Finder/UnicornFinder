@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import unicornfinder.unicornfinder.config.auth.dto.SessionMember;
@@ -59,5 +60,30 @@ public class CompanyDetailController {
         return "redirect:/companies/{companyId}";
     }
 
+    @GetMapping("/companies/{companyId}/edit")
+    public String updateCompanyDetailForm(@PathVariable Long companyId, Model model){
+
+        SessionMember member = (SessionMember) httpSession.getAttribute("member");
+
+        if(member.getRole().toString().equals("ADMIN")){
+            Company company = companyService.findOne(companyId);
+            CompanyDetail companyDetail = companyDetailService.findOne(company.getCompanyDetail().getId()); //이부분 지져분하다
+
+            CompanyDetailForm form = new CompanyDetailForm();
+            form.setForm(companyDetail);
+            model.addAttribute("company", company); /** model 에 이렇게 많이 넣어도되나*/
+            model.addAttribute("form", form);
+            return "companies/updateCompanyDetailForm";
+        }
+        else{
+            return "redirect:/";
+        }
+    }
+
+    @PostMapping("/companies/{companyId}/edit")
+    public String updateCompanyDetail(@PathVariable Long companyId, @ModelAttribute CompanyDetailForm companyDetailForm){
+        companyDetailService.updateCompanyDetail(companyId, companyDetailForm);
+        return "redirect:/companies/"+companyId;
+    }
 
 }
