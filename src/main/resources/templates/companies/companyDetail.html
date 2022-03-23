@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+    <title>Company Detail</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader" />
+    <div class="row">
+        <div class="col-md-9">
+            <div class="span">
+                <h2 th:text="${company.product}">** 기업</h2>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="span">
+                <a th:if="${status} == 1" href="#"
+                   th:href="'javascript:cancel('+${memberId}+','+ ${company.getId()}+')'"
+                   class="btn btn-primary">관심 해제</a>
+                <a th:unless="${status} == 1" href="#"
+                   th:href="'javascript:interest('+${memberId}+','+ ${company.getId()}+')'"
+                   class="btn btn-outline-primary">관심 등록</a>
+            </div>
+        </div>
+    </div>
+    <div class="row jumbotron">
+        <div class="col-md-9">
+            <div class="span">
+                <h3>기업 정보</h3>
+                <p th:text="${companyDetail.info}"></p>
+            </div>
+            <div class="span">
+                <h3>기술 블로그</h3>
+                <p th:text="${companyDetail.blog}"></p>
+            </div>
+            <div class="span">
+                <h3>성장 과정</h3>
+                <p>그래프</p>
+            </div>
+            <div class="span">
+                <h3>직원 복지</h3>
+                <p th:text="${companyDetail.welfare}"></p>
+            </div>
+            <div class="span">
+                <h3>기타 사항</h3>
+                <p th:text="${companyDetail.etc}"></p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="span">
+                <h3>관심수</h3>
+                <p th:text="${company.count}"></p>
+            </div>
+            <div class="span">
+                <h3>직원수</h3>
+                <p th:text="${company.employee}"></p>
+            </div>
+            <div class="span">
+                <h3>위치</h3>
+                <iframe
+                        height="250"
+                        width="250"
+                        style="border: 0"
+                        loading="lazy"
+                        allowfullscreen
+                        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBN_RT5KgkVSDhQ1UV4PFnfc6IGckgRVq4&q=배달의민족&region=KR&language=ko">
+                </iframe>
+                <p th:text="${companyDetail.location}">주소~</p>
+            </div>
+            <div th:if="${session.member}!=null"> <!--상세 수정 -->
+                <a th:if="${session.member.role.toString().equals('ADMIN')}" th:href="'/companies/' + ${company.id} + '/edit'" href="#" class="btn btn-primary">
+                    상세 수정
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="fragments/footer :: footer" />
+</div> <!-- /container -->
+</body>
+<script>
+    function cancel(memberId, companyId){
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", "/interest/" + memberId + "/" + companyId +"/cancel");
+        document.body.appendChild(form);
+        form.submit();
+    };
+    function interest(memberId, companyId){
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", "/interest/" + memberId + "/" + companyId);
+        document.body.appendChild(form);
+        form.submit();
+    };
+</script>
+
+</html>

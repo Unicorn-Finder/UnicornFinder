@@ -27,6 +27,8 @@ dependencies {
 	// security + oauth2
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+	//mysql
+	implementation 'mysql:mysql-connector-java'
 
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.h2database:h2'

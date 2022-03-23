@@ -2,6 +2,7 @@ package unicornfinder.unicornfinder.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import unicornfinder.unicornfinder.controller.CompanyForm;
 
 import javax.persistence.*;
 
@@ -50,13 +51,25 @@ public class Company extends BaseTimeEntity{
         this.companyDetail = companyDetail;
         companyDetail.setCompany(this);
     }
+    /** companyForm을 이용한 create로 변경 삭제해야함*/
+//    //생성 메서드 추가
+//    public static Company createCompany(String name, String product, long invest, Round round, String domain, int employee, Location location){
+//        Company company = new Company();
+//        CompanyDetail companyDetail = new CompanyDetail();
+//
+//        company.setCompanyDetail(companyDetail);
+//        company.setCompany(name, product, invest, round, domain, employee, location);
+//        return company;
+//    }
+
     //생성 메서드 추가
-    public static Company createCompany(String name, String product, long invest, Round round, String domain, int employee, Location location){
+    /** companyForm로 전달*/
+    public static Company createCompany(CompanyForm companyForm){
         Company company = new Company();
         CompanyDetail companyDetail = new CompanyDetail();
 
         company.setCompanyDetail(companyDetail);
-        company.setCompany(name, product, invest, round, domain, employee, location);
+        company.setCompany(companyForm.getName(), companyForm.getProduct(), companyForm.getInvest(), companyForm.getRound(), companyForm.getDomain(), companyForm.getEmployee(), companyForm.getLocation());
         return company;
     }
 

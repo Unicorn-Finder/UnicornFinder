@@ -1,5 +1,6 @@
 package unicornfinder.unicornfinder.controller;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import unicornfinder.unicornfinder.domain.Location;
@@ -27,4 +28,5 @@ public class CompanyForm {
     private int count; //관심수
 
     private Long id; // 등록한 사람
+
 }

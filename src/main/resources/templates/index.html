@@ -32,7 +32,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="company : ${companies}">
+            <tr th:each="company : ${companies}" th:onclick="'location.href=\''+ '/companies/'+ @{${company.id}} + '\''" onClick="">
                 <td th:text="${company.invest}"></td>
                 <td th:text="${company.round}"></td>
                 <td th:text="${company.name}"></td>

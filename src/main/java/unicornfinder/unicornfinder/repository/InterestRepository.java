@@ -8,6 +8,7 @@ import unicornfinder.unicornfinder.domain.Member;
 
 import javax.persistence.EntityManager;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
@@ -28,6 +29,17 @@ public class InterestRepository {
     public void cancel(Long id){
         Interest interest = findOne(id);
         em.remove(interest);
+    }
+
+    /** memberId와 companyId가 interest db에 있는지 확인*/
+    /** null 일수도 있으므로 optional로 */
+    public Optional<Interest> findInterestByMemberCompany(Long memberId, Long companyId){
+        List<Interest> interests = em.createQuery("select i from Interest i " +
+                        "where i.company.id = :companyId and i.member.id = :memberId", Interest.class)
+                .setParameter("companyId", companyId)
+                .setParameter("memberId", memberId)
+                .getResultList();
+        return interests.stream().findAny();
     }
 
     //나중에 memberId를 기준으로 조회할때 쓸거같다.

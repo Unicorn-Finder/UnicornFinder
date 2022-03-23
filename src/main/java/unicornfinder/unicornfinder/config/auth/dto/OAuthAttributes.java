@@ -42,7 +42,7 @@ public class OAuthAttributes {
         return Member.builder()
                 .name(name)
                 .email(email)
-                .role(Role.USER)
+                .role(Role.ADMIN)
                 .build();
     }
 }

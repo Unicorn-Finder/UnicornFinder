@@ -17,6 +17,8 @@ public class CompanyDetail {
     @OneToOne(mappedBy = "companyDetail", fetch = FetchType.LAZY) /**양방향 관계추가 주인 변경*/
     private Company company;
 
+    private String info; /** 기업 정보 추가*/
+
     private String blog;//기술블로그
 
     private  String welfare;//직원복지
@@ -26,7 +28,8 @@ public class CompanyDetail {
     private String location;//상세 주소
 
     //setter
-    public void changeDetail(String blog, String welfare, String etc, String location){
+    public void changeDetail(String info, String blog, String welfare, String etc, String location){
+        this.info = info;/** 기업 정보 추가*/
         this.blog = blog;
         this.welfare = welfare;
         this.etc = etc;

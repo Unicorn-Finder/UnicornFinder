@@ -38,7 +38,8 @@ public class CompanyService {
     }
 
     //company저장
-    //create 로 변경하기 
+    //create 로 변경하기
+    /** 위 create 함수와 정리 필요*/
     @Transactional
     public Long saveCompany(Company company){
         Company c = companyRepository.saveCompany(company);
