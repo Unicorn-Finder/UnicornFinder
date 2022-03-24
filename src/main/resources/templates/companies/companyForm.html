@@ -20,16 +20,8 @@
                 <div class="col">
                     <label th:for="round">투자 단계</label>
                     <select id="round" th:field="*{round}">
-                        <option value="">--선택--</option>
-                        <option value="SEED">SEED</option>
-                        <option value="PRE_A">PRE_A</option>
-                        <option value="SERIES_A">SERIES_A</option>
-                        <option value="SERIES_B">SERIES_B</option>
-                        <option value="SERIES_C">SERIES_C</option>
-                        <option value="SERIES_D">SERIES_D</option>
-                        <option value="SERIES_E">SERIES_E</option>
-                        <option value="PRE_IPO">PRE_IPO</option>
-                        <option value="IPO">IPO</option>
+                        <option th:each="roundOpt : ${T(unicornfinder.unicornfinder.domain.Round).values()}"
+                                th:value = "${roundOpt}" th:text="${roundOpt}"></option>
                     </select>
                 </div>
             </div>
@@ -50,7 +42,10 @@
                 </div>
                 <div class="col">
                     <label th:for="location">위치</label>
-                    <input type="text" id="location" th:field="*{location}">
+                    <select th:field="*{location}">
+                        <option th:each="locOpt : ${T(unicornfinder.unicornfinder.domain.Location).values()}"
+                                th:value = "${locOpt}" th:text="${locOpt}"></option>
+                    </select>
                 </div>
             </div>
             <div class="row">

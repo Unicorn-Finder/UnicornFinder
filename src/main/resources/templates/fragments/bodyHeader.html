@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <div class="header" th:fragment="bodyHeader">
+    <!-- 디자인 변경으로 주석 처리
     <ul class="nav nav-pills pull-right">
-        <li><a href="/">Home</a></li>
+        <li><a href="/" >Home</a></li>
         <div th:if="${session.member}!=null">
             <a th:if="${session.member.role.toString().equals('ADMIN')}" href="/companies/new">
                 회사등록
             </a>
         </div>
-
+    </ul>
+    -->
+    <ul class="nav" style="margin : 10px;">
+        <li class="nav-item" style="margin-right : auto;">
+            <a class="btn btn-success" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+            <div th:if="${session.member}!=null">
+                <a class="btn btn-info" th:if="${session.member.role.toString().equals('ADMIN')}" href="/companies/new">
+                    회사등록
+                </a>
+            </div>
+        </li>
     </ul>
     <a href="/"><h3 class="text-muted">🦄 Unicorn Finder</h3></a>
 </div>
