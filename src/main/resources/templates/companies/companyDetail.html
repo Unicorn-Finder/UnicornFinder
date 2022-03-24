@@ -72,6 +72,9 @@
                 <a th:if="${session.member.role.toString().equals('ADMIN')}" th:href="'/companies/' + ${company.id} + '/edit'" href="#" class="btn btn-primary">
                     상세 수정
                 </a>
+                <a th:if="${session.member.role.toString().equals('ADMIN')}" th:href="'/companies/' + ${company.id} + '/editCompany'" href="#" class="btn btn-primary">
+                    기본정보 수정
+                </a>
             </div>
         </div>
     </div>
