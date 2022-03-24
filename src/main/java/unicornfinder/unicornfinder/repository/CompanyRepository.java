@@ -18,7 +18,12 @@ public class CompanyRepository {
     private final EntityManager em;
 
     public void save(Company company){
-        em.persist(company);
+        if(company.getId()==null) {
+            em.persist(company);
+        }
+        else{
+            em.merge(company);
+        }
     }
 
     public Company findOne(Long id) {
@@ -59,19 +64,6 @@ public class CompanyRepository {
         }
 
         return companyList;
-    }
-
-    //company 등록
-    /** 위 save 함수와 정리 필요*/
-    public Company saveCompany(Company company){
-        System.out.println("company id : "+company.getId());
-        if(company.getId()==null) {
-            em.persist(company);
-        }
-        else{
-            em.merge(company);
-        }
-        return company;
     }
 
     //interest 등로 임시테스트용)
