@@ -79,6 +79,9 @@
                 <a th:if="${session.member.role.toString().equals('ADMIN')}" th:href="'/companies/' + ${company.id} + '/editCompany'" href="#" class="btn btn-primary">
                     기본정보 수정
                 </a>
+                <a th:if="${session.member.role.toString().equals('ADMIN')}" th:href="'javascript:deleteCompany('+ ${company.getId()}+')'" href="#" class="btn btn-danger">
+                    회사 삭제
+                </a>
             </div>
         </div>
     </div>
@@ -98,6 +101,13 @@
         var form = document.createElement("form");
         form.setAttribute("method", "post");
         form.setAttribute("action", "/interest/" + memberId + "/" + companyId);
+        document.body.appendChild(form);
+        form.submit();
+    };
+    function deleteCompany(companyId) {
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", "/companies/" + companyId);
         document.body.appendChild(form);
         form.submit();
     };

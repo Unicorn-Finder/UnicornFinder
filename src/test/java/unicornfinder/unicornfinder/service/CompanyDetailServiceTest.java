@@ -10,6 +10,7 @@ import unicornfinder.unicornfinder.controller.CompanyDetailForm;
 import unicornfinder.unicornfinder.controller.CompanyForm;
 import unicornfinder.unicornfinder.domain.*;
 import unicornfinder.unicornfinder.repository.CompanyDetailRepository;
+import unicornfinder.unicornfinder.repository.CompanyRepository;
 import unicornfinder.unicornfinder.repository.InterestRepository;
 import unicornfinder.unicornfinder.repository.MemberRepository;
 
@@ -25,19 +26,20 @@ class CompanyDetailServiceTest {
     @Autowired InterestRepository interestRepository;
     @Autowired InterestService interestService;
     @Autowired CompanyService companyService;
+    @Autowired CompanyRepository companyRepository;
     @Autowired EntityManager em;
 
 
     @AfterEach
     void cleanup(){
         System.out.println("---- cleanup -----");
-        companyDetailRepository.deleteAll();
+        companyService.deleteAll();
     }
 
     @Test
     void 회사상세조회()  throws Exception{
         //given
-        CompanyForm companyForm = createForm(20, 80000000, "스프링", "스프링파인더");
+        CompanyForm companyForm = createForm(20, "80000000", "스프링", "스프링파인더");
         //when
         Company company = Company.createCompany(companyForm);
         Long id = companyService.create(company);
@@ -49,7 +51,7 @@ class CompanyDetailServiceTest {
     @Test
     void 회사상세수정() {
         //given
-        CompanyForm companyForm = createForm(30, 40000000, "유니콘", "유니콘파인더");
+        CompanyForm companyForm = createForm(30, "40000000", "유니콘", "유니콘파인더");
         Company company = Company.createCompany(companyForm);
         Long id = companyService.create(company);
 
@@ -72,7 +74,7 @@ class CompanyDetailServiceTest {
         Member member2 = new Member("bbb", "jh@gmail.com", Role.ADMIN);
         memberRepository.save(member2);
 
-        CompanyForm companyForm = createForm(30, 40000000, "유니콘", "유니콘파인더");
+        CompanyForm companyForm = createForm(30, "40000000", "유니콘", "유니콘파인더");
         Company company = Company.createCompany(companyForm);
         Long createId = companyService.create(company);
         //when
@@ -96,7 +98,7 @@ class CompanyDetailServiceTest {
         return companyDetailForm;
     }
 
-    private CompanyForm createForm(int employee, int invest, String name, String product) {
+    private CompanyForm createForm(int employee, String invest, String name, String product) {
         CompanyForm companyForm = new CompanyForm();
         companyForm.setEmployee(employee);
         companyForm.setInvest(invest);

@@ -11,5 +11,4 @@ public class UnicornFinderApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(UnicornFinderApplication.class, args);
 	}
-
 }

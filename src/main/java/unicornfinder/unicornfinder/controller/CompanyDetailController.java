@@ -4,10 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import unicornfinder.unicornfinder.config.auth.dto.SessionMember;
 import unicornfinder.unicornfinder.domain.Company;
 import unicornfinder.unicornfinder.domain.CompanyDetail;
@@ -85,6 +82,12 @@ public class CompanyDetailController {
     public String updateCompanyDetail(@PathVariable Long companyId, @ModelAttribute CompanyDetailForm companyDetailForm){
         companyDetailService.updateCompanyDetail(companyId, companyDetailForm);
         return "redirect:/companies/"+companyId;
+    }
+
+    @PostMapping("/companies/{companyId}")
+    public String deleteCompany(@PathVariable Long companyId){
+        companyService.delete(companyId);
+        return "redirect:/";
     }
 
 }
