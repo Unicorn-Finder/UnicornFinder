@@ -3,6 +3,9 @@
 <head th:replace="fragments/header :: header">
     <title>Company Detail</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+    textarea.autosize { min-height: 50px; }
+    </style>
 </head>
 <body>
 <div class="container">
@@ -28,23 +31,24 @@
         <div class="col-md-9">
             <div class="span">
                 <h3>기업 정보</h3>
-                <p th:text="${companyDetail.info}"></p>
+                <textarea id="textarea1" class="form-control" th:text="${companyDetail.info}" readonly></textarea>
             </div>
             <div class="span">
                 <h3>기술 블로그</h3>
-                <p th:text="${companyDetail.blog}"></p>
+                <textarea id="textarea2" class="form-control" th:text="${companyDetail.blog}" readonly></textarea>
             </div>
+            <!-- 그래프 주석
             <div class="span">
                 <h3>성장 과정</h3>
                 <p>그래프</p>
-            </div>
+            </div>-->
             <div class="span">
                 <h3>직원 복지</h3>
-                <p th:text="${companyDetail.welfare}"></p>
+                <textarea id="textarea3" class="form-control" th:text="${companyDetail.welfare}" readonly></textarea>
             </div>
             <div class="span">
                 <h3>기타 사항</h3>
-                <p th:text="${companyDetail.etc}"></p>
+                <textarea id="textarea4" class="form-control" th:text="${companyDetail.etc}" readonly></textarea>
             </div>
         </div>
         <div class="col-md-3">
@@ -59,12 +63,12 @@
             <div class="span">
                 <h3>위치</h3>
                 <iframe
+                        id="googleMap"
                         height="250"
                         width="250"
                         style="border: 0"
                         loading="lazy"
-                        allowfullscreen
-                        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBN_RT5KgkVSDhQ1UV4PFnfc6IGckgRVq4&q=배달의민족&region=KR&language=ko">
+                        allowfullscreen >
                 </iframe>
                 <p th:text="${companyDetail.location}">주소~</p>
             </div>
@@ -97,6 +101,27 @@
         document.body.appendChild(form);
         form.submit();
     };
+</script>
+<script th:inline="javascript">
+    $( document ).ready(function() {
+
+         /*<![CDATA[*/
+         var company_name = /*[[ ${company.name} ]]*/;
+         /*]]*/
+
+
+        var url = "https://www.google.com/maps/embed/v1/place?key=AIzaSyBN_RT5KgkVSDhQ1UV4PFnfc6IGckgRVq4&q="+company_name+"&region=KR&language=ko";
+
+         $("#googleMap")[0].src = url;
+
+        for(var i=1; i<5; i++){
+             let textarea = $("#textarea"+i)[0];
+
+             textarea.style.height = 'auto';
+            let height = textarea.scrollHeight; // 높이
+            textarea.style.height = `${height + 8}px`;
+        }
+});
 </script>
 
 </html>
