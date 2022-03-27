@@ -102,7 +102,7 @@
     };
     function deleteCompany(companyId) {
         var form = document.createElement("form");
-        form.setAttribute("method", "DELETE");
+        form.setAttribute("method", "post");
         form.setAttribute("action", "/companies/" + companyId);
         document.body.appendChild(form);
         form.submit();

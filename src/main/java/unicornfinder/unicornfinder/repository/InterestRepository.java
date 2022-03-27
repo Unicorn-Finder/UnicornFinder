@@ -44,8 +44,20 @@ public class InterestRepository {
 
     //나중에 memberId를 기준으로 조회할때 쓸거같다.
     public List<Interest> findAllByMember(Long memberId){
-        return em.createQuery("select i from Interest i where i.member = :memberId", Interest.class)
+        return em.createQuery("select i from Interest i where i.member.id = :memberId", Interest.class)
                 .setParameter("memberId", memberId)
                 .getResultList();
+    }
+
+    //나중에 companyId를 기준으로 조회할때 쓸거같다.
+    public List<Interest> findAllByCompany(Long companyId){
+        return em.createQuery("select i from Interest i where i.company.id = :companyId", Interest.class)
+                .setParameter("companyId", companyId)
+                .getResultList();
+    }
+
+    public void delete (Long id){
+        Interest interest = findOne(id);
+        em.remove(interest);
     }
 }

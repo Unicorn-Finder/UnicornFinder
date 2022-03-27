@@ -33,7 +33,7 @@ class CompanyServiceTest {
     @AfterEach
     void cleanup(){
         System.out.println("---- cleanup -----");
-        companyRepository.deleteAll();
+        companyService.deleteAll();
 //        List<Company> product = companyRepository.findByName_Product("유니콘파인더");
 //        System.out.println(product.size());
     }

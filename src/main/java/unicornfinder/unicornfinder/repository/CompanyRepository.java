@@ -34,9 +34,12 @@ public class CompanyRepository {
         List<Company> companyList = em.createQuery("select c from Company c", Company.class)
                 .getResultList();
         //조회한 company에 count값 설정해주기
-        for(Company c : companyList){
-            c.setCount(findCountById(c.getId()));
+        if (!companyList.isEmpty()){
+            for(Company c : companyList){
+                c.setCount(findCountById(c.getId()));
+            }
         }
+
         return companyList;
     }
 
@@ -66,14 +69,19 @@ public class CompanyRepository {
         return companyList;
     }
 
-//    public void delete (Long id){
-//        Company company = findOne(id);
-//        em.remove(company);
-//    }
+    @Transactional
+    public void delete (Long id){
+        Company company = findOne(id);
+        em.remove(company);
+    }
 
     /** test 를 위한 메서드*/
+    @Transactional
     public void deleteAll(){
-        em.flush();
-        em.clear();
+        List<Company> companies = findAll();
+        for (Company company : companies) {
+            Long id = company.getId();
+            delete(id);
+        }
     }
 }

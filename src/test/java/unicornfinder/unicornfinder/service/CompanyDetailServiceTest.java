@@ -10,6 +10,7 @@ import unicornfinder.unicornfinder.controller.CompanyDetailForm;
 import unicornfinder.unicornfinder.controller.CompanyForm;
 import unicornfinder.unicornfinder.domain.*;
 import unicornfinder.unicornfinder.repository.CompanyDetailRepository;
+import unicornfinder.unicornfinder.repository.CompanyRepository;
 import unicornfinder.unicornfinder.repository.InterestRepository;
 import unicornfinder.unicornfinder.repository.MemberRepository;
 
@@ -25,13 +26,14 @@ class CompanyDetailServiceTest {
     @Autowired InterestRepository interestRepository;
     @Autowired InterestService interestService;
     @Autowired CompanyService companyService;
+    @Autowired CompanyRepository companyRepository;
     @Autowired EntityManager em;
 
 
     @AfterEach
     void cleanup(){
         System.out.println("---- cleanup -----");
-        companyDetailRepository.deleteAll();
+        companyService.deleteAll();
     }
 
     @Test
