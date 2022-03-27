@@ -41,7 +41,7 @@ class CompanyServiceTest {
     @Test
     void 회사등록()  throws Exception{
         //given
-        CompanyForm companyForm = createForm(30, 40000000, "유니콘", "유니콘파인더");
+        CompanyForm companyForm = createForm(30, "40000000", "유니콘", "유니콘파인더");
         //when
         Company company = Company.createCompany(companyForm);
         Long id = companyService.create(company);
@@ -54,7 +54,7 @@ class CompanyServiceTest {
     @Test
     void 회사상세조회()  throws Exception{
         //given
-        CompanyForm companyForm = createForm(20, 80000000, "스프링", "스프링파인더");
+        CompanyForm companyForm = createForm(20, "80000000", "스프링", "스프링파인더");
         //when
         Company company = Company.createCompany(companyForm);
         Long id = companyService.create(company);
@@ -63,7 +63,7 @@ class CompanyServiceTest {
         Assertions.assertThat(company.getCompanyDetail()).isEqualTo(companyService.findOne(id).getCompanyDetail());
     }
 
-    private CompanyForm createForm(int employee, int invest, String name, String product) {
+    private CompanyForm createForm(int employee, String invest, String name, String product) {
         CompanyForm companyForm = new CompanyForm();
         companyForm.setEmployee(employee);
         companyForm.setInvest(invest);
@@ -75,11 +75,11 @@ class CompanyServiceTest {
     @Test
     public void 전체조회() throws Exception{
         //given
-        CompanyForm companyForm1 = createForm(30, 40000000, "유니콘", "유니콘파인더");
+        CompanyForm companyForm1 = createForm(30, "40000000", "유니콘", "유니콘파인더");
         Company company1 = Company.createCompany(companyForm1);
         companyService.create(company1);
 
-        CompanyForm companyForm2 = createForm(20, 80000000, "스프링", "스프링파인더");
+        CompanyForm companyForm2 = createForm(20, "80000000", "스프링", "스프링파인더");
         Company company2 = Company.createCompany(companyForm2);
         companyService.create(company2);
         //when

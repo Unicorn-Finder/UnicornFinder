@@ -14,7 +14,7 @@ public class CompanyForm {
     private String name; // 회사명
 
     private String product; // 서비스 명
-    private Long invest; // 총 투자액
+    private String invest; // 총 투자액
 
     @Enumerated(EnumType.STRING)
     private Round round; // 투자 단계

@@ -18,7 +18,7 @@ public class Company extends BaseTimeEntity{
     private String name; // 회사명
 
     private String product; // 서비스 명
-    private long invest; // 총 투자액
+    private String invest; // 총 투자액
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) /**cascade 추가*/
     @JoinColumn(name = "detail_id")
@@ -78,7 +78,7 @@ public class Company extends BaseTimeEntity{
         this.count = count;
     }
 
-    private void setCompany(String name, String product, long invest, Round round, String domain, int employee, Location location) {
+    private void setCompany(String name, String product, String invest, Round round, String domain, int employee, Location location) {
         this.name = name;
         this.product = product;
         this.invest = invest;

@@ -19,5 +19,5 @@ public class Invest {
     //date로 할지 고민,, 년도만 할거니까..?
     private String year;
 
-    private long invest;//투자액
+    private String invest;//투자액
 }
