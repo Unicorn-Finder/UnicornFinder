@@ -3,9 +3,6 @@
 <head th:replace="fragments/header :: header">
     <title>Company Detail</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <style>
-    textarea.autosize { min-height: 50px; }
-    </style>
 </head>
 <body>
 <div class="container">
@@ -31,11 +28,11 @@
         <div class="col-md-9">
             <div class="span">
                 <h3>기업 정보</h3>
-                <textarea id="textarea1" class="form-control" th:text="${companyDetail.info}" readonly></textarea>
+                <textarea id="textarea1" class="form-control" th:text="${companyDetail.info}" style="border : none;" readonly></textarea>
             </div>
             <div class="span">
                 <h3>기술 블로그</h3>
-                <textarea id="textarea2" class="form-control" th:text="${companyDetail.blog}" readonly></textarea>
+                <textarea id="textarea2" class="form-control" th:text="${companyDetail.blog}" style="border : none;" readonly></textarea>
             </div>
             <!-- 그래프 주석
             <div class="span">
@@ -44,11 +41,11 @@
             </div>-->
             <div class="span">
                 <h3>직원 복지</h3>
-                <textarea id="textarea3" class="form-control" th:text="${companyDetail.welfare}" readonly></textarea>
+                <textarea id="textarea3" class="form-control" th:text="${companyDetail.welfare}" style="border : none;" readonly></textarea>
             </div>
             <div class="span">
                 <h3>기타 사항</h3>
-                <textarea id="textarea4" class="form-control" th:text="${companyDetail.etc}" readonly></textarea>
+                <textarea id="textarea4" class="form-control" th:text="${companyDetail.etc}" style="border : none;" readonly></textarea>
             </div>
         </div>
         <div class="col-md-3">
@@ -116,11 +113,11 @@
     $( document ).ready(function() {
 
          /*<![CDATA[*/
-         var company_name = /*[[ ${company.name} ]]*/;
+         var company_location = /*[[ ${companyDetail.location} ]]*/;
          /*]]*/
 
 
-        var url = "https://www.google.com/maps/embed/v1/place?key=AIzaSyBN_RT5KgkVSDhQ1UV4PFnfc6IGckgRVq4&q="+company_name+"&region=KR&language=ko";
+        var url = "https://www.google.com/maps/embed/v1/place?key=AIzaSyBN_RT5KgkVSDhQ1UV4PFnfc6IGckgRVq4&q="+company_location+"&region=KR&language=ko";
 
          $("#googleMap")[0].src = url;
 
