@@ -8,10 +8,6 @@ public enum Round {
     SERIES_C,
     SERIES_D,
     SERIES_E,
-    SERIES_F,
-    SERIES_G,
     PRE_IPO,
-    IPO,
-    Post_IPO,
-    M_A
+    IPO
 }
