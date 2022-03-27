@@ -66,6 +66,11 @@ public class CompanyRepository {
         return companyList;
     }
 
+//    public void delete (Long id){
+//        Company company = findOne(id);
+//        em.remove(company);
+//    }
+
     /** test 를 위한 메서드*/
     public void deleteAll(){
         em.flush();
