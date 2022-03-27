@@ -36,15 +36,4 @@ public class CompanyService {
     public List<Company> searchCompanies(String search){
         return companyRepository.findByName_Product(search);
     }
-
-     /** 삭제 예정*/
-    //company저장
-    //create 로 변경하기
-//    /** 위 create 함수와 정리 필요*/
-//    @Transactional
-//    public Long saveCompany(Company company){
-//        Company c = companyRepository.saveCompany(company);
-//        return c.getId();
-//    }
-
 }

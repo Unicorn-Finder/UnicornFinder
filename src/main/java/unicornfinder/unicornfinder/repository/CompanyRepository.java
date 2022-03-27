@@ -71,17 +71,4 @@ public class CompanyRepository {
         em.flush();
         em.clear();
     }
-
-    /** 삭제 예정*/
-    //company 등록
-//    public Company saveCompany(Company company){
-//        System.out.println("company id : "+company.getId());
-//        if(company.getId()==null) {
-//            em.persist(company);
-//        }
-//        else{
-//            em.merge(company);
-//        }
-//        return company;
-//    }
 }

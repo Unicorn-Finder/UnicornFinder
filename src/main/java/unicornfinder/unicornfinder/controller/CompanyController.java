@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import unicornfinder.unicornfinder.config.auth.dto.SessionMember;
 import unicornfinder.unicornfinder.domain.Company;
@@ -28,6 +29,8 @@ public class CompanyController {
         SessionMember member = (SessionMember) httpSession.getAttribute("member");
 
         if(member.getRole().toString().equals("ADMIN")){
+            CompanyForm companyForm = new CompanyForm();
+            model.addAttribute("companyForm", companyForm);
             return "companies/companyForm";
         }
         else{
@@ -38,10 +41,36 @@ public class CompanyController {
     /** createCompany로 company 생성*/
     @PostMapping("/companies/new")
     public String companySave(CompanyForm companyform){
-
         Company company = Company.createCompany(companyform);
+        
+      //수정 위해서 추가
+        if(companyform.getId()!=null){
+            company.setId(companyform.getId());
+        }
+      
         companyService.create(company);
 
         return "redirect:/";
+    }
+
+    @GetMapping("/companies/{companyId}/editCompany")
+    public String updateForm(@PathVariable Long companyId,  Model model){
+        CompanyForm companyForm = new CompanyForm();
+
+        Company company = companyService.findOne(companyId);
+
+        companyForm.setId(company.getId());
+        companyForm.setDomain(company.getDomain());
+        companyForm.setEmployee(company.getEmployee());
+        companyForm.setInvest(company.getInvest());
+        companyForm.setLocation(company.getLocation());
+        companyForm.setName(company.getName());
+        companyForm.setProduct(company.getProduct());
+        companyForm.setRound(company.getRound());
+
+
+        model.addAttribute("companyForm", companyForm);
+
+        return "companies/companyForm";
     }
 }
