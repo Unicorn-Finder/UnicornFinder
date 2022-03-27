@@ -1,7 +1,7 @@
 #!/bin/bash
 
 REPOSITORY=/home/ec2-user/app/step2
-PROJECT_NAME=UnicornFinder
+PROJECT_NAME=unicorn-finder
 
 echo "> Build 파일 복사"
 
