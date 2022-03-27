@@ -66,8 +66,9 @@ public class CompanyRepository {
         return companyList;
     }
 
-    //interest 등로 임시테스트용)
-    public void saveInterest(Interest interest){
-        em.persist(interest);
+    /** test 를 위한 메서드*/
+    public void deleteAll(){
+        em.flush();
+        em.clear();
     }
 }

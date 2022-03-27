@@ -26,15 +26,14 @@ public class CompanyService {
         return companyRepository.findOne(id);
     }
 
-
     //company 전체 조회
     public List<Company> findCompanies(){
         return companyRepository.findAll();
     }
 
+    /** 이거 왜 있는거지?*/
     //검색 기능(name, product 와 일치하는 항목 가져오기)
     public List<Company> searchCompanies(String search){
         return companyRepository.findByName_Product(search);
     }
-
 }

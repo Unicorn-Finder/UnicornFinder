@@ -67,7 +67,8 @@ public class CompanyDetailController {
 
         if(member.getRole().toString().equals("ADMIN")){
             Company company = companyService.findOne(companyId);
-            CompanyDetail companyDetail = companyDetailService.findOne(company.getCompanyDetail().getId()); //이부분 지져분하다
+            Long detailId = companyDetailService.findDetailIdByCompanyId(companyId);
+            CompanyDetail companyDetail = companyDetailService.findOne(detailId);
 
             CompanyDetailForm form = new CompanyDetailForm();
             form.setForm(companyDetail);
