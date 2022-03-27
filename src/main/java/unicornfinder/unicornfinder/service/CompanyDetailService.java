@@ -26,9 +26,16 @@ public class CompanyDetailService {
     public void saveCompanyDetail(CompanyDetail cd){
         companyDetailRepository.save(cd);
     }
+
+    //companyId로 detailId 찾는 메서드 추가
+    public Long findDetailIdByCompanyId(Long companyId) {
+        Long detailId = companyRepository.findOne(companyId).getCompanyDetail().getId();
+        return detailId;
+    }
+
     /** info 추가*/ /** chanegeDetail에 인자넣는 부분 어색하다*/
     public void updateCompanyDetail(Long companyId, CompanyDetailForm companyDetailForm){
-        Long id = companyRepository.findOne(companyId).getCompanyDetail().getId(); /**이렇게 수동으로 넣어주어야하나?*/
+        Long id = findDetailIdByCompanyId(companyId);
         CompanyDetail cd = companyDetailRepository.findOne(id);
         cd.changeDetail(companyDetailForm.getInfo(), companyDetailForm.getBlog(), companyDetailForm.getWelfare(), companyDetailForm.getEtc(), companyDetailForm.getLocation());
     }

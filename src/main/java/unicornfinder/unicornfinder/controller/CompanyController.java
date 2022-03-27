@@ -38,21 +38,8 @@ public class CompanyController {
     /** createCompany로 company 생성*/
     @PostMapping("/companies/new")
     public String companySave(CompanyForm companyform){
-//        Company company = new Company();
-//
-//        System.out.println(companyform.getName());
-//
-//        company.setName(companyform.getName());
-//        company.setEmployee(companyform.getEmployee());
-//        company.setProduct(companyform.getProduct());
-//        company.setDomain(companyform.getDomain());
-//        company.setInvest(companyform.getInvest());
-//        company.setLocation(companyform.getLocation());
-//        company.setRound(companyform.getRound());
-//
-//        companyService.saveCompany(company);
-        Company company = Company.createCompany(companyform);
 
+        Company company = Company.createCompany(companyform);
         companyService.create(company);
 
         return "redirect:/";

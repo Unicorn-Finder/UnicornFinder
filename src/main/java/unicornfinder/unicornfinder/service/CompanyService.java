@@ -26,24 +26,25 @@ public class CompanyService {
         return companyRepository.findOne(id);
     }
 
-
     //company 전체 조회
     public List<Company> findCompanies(){
         return companyRepository.findAll();
     }
 
+    /** 이거 왜 있는거지?*/
     //검색 기능(name, product 와 일치하는 항목 가져오기)
     public List<Company> searchCompanies(String search){
         return companyRepository.findByName_Product(search);
     }
 
+     /** 삭제 예정*/
     //company저장
     //create 로 변경하기
-    /** 위 create 함수와 정리 필요*/
-    @Transactional
-    public Long saveCompany(Company company){
-        Company c = companyRepository.saveCompany(company);
-        return c.getId();
-    }
+//    /** 위 create 함수와 정리 필요*/
+//    @Transactional
+//    public Long saveCompany(Company company){
+//        Company c = companyRepository.saveCompany(company);
+//        return c.getId();
+//    }
 
 }

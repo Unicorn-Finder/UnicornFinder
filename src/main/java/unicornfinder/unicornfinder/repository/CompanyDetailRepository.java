@@ -24,4 +24,11 @@ public class CompanyDetailRepository {
     public CompanyDetail findOne(Long id){
         return em.find(CompanyDetail.class, id);
     }
+
+    /** test 를 위한 메서드 다시 구현 필요*/
+    //아직 정확하지않음
+    public void deleteAll(){
+        em.flush();
+        em.clear();
+    }
 }
