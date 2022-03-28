@@ -31,7 +31,7 @@ public class CompanyDetailController {
     public String detail(@PathVariable Long companyId, Model model){
 
         Company company = companyService.findOne(companyId);
-        CompanyDetail companyDetail = companyDetailService.findOne(company.getCompanyDetail().getId()); //이부분 지져분하다
+        CompanyDetail companyDetail = companyDetailService.findOne(company.getCompanyDetail().getId());
 
         SessionMember sessionMember = (SessionMember) httpSession.getAttribute("member");
         Long memberId = memberRepository.findByEmail(sessionMember.getEmail()).get().getId();

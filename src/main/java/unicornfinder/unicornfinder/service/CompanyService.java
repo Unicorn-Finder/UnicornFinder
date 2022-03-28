@@ -4,8 +4,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import unicornfinder.unicornfinder.controller.CompanyForm;
 import unicornfinder.unicornfinder.domain.Company;
 import unicornfinder.unicornfinder.domain.Interest;
+import unicornfinder.unicornfinder.domain.Round;
 import unicornfinder.unicornfinder.repository.CompanyRepository;
 import unicornfinder.unicornfinder.repository.InterestRepository;
 
@@ -38,6 +40,13 @@ public class CompanyService {
     //검색 기능(name, product 와 일치하는 항목 가져오기)
     public List<Company> searchCompanies(String search){
         return companyRepository.findByName_Product(search);
+    }
+
+    //수정 메서드
+    @Transactional
+    public void updateCompany(Long companyId, CompanyForm companyForm){
+        Company company = companyRepository.findOne(companyId);
+        company.changeCompany(companyForm.getName(), companyForm.getProduct(), companyForm.getInvest(), companyForm.getRound(), companyForm.getDomain(), companyForm.getEmployee(), companyForm.getLocation(), companyForm.getCount());
     }
 
     @Transactional

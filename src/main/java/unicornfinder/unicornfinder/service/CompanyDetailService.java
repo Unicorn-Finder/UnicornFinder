@@ -33,7 +33,7 @@ public class CompanyDetailService {
         return detailId;
     }
 
-    /** info 추가*/ /** chanegeDetail에 인자넣는 부분 어색하다*/
+    //수정 메서드
     public void updateCompanyDetail(Long companyId, CompanyDetailForm companyDetailForm){
         Long id = findDetailIdByCompanyId(companyId);
         CompanyDetail cd = companyDetailRepository.findOne(id);

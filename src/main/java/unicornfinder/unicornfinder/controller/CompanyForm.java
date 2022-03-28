@@ -29,6 +29,8 @@ public class CompanyForm {
 
     private Long id; //company id
     
-    private Long register_id; //등록한 사람
+    private String register_email; //등록한 사람
+
+
 
 }
