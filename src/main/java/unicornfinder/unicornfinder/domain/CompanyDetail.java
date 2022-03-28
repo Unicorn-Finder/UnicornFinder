@@ -17,12 +17,15 @@ public class CompanyDetail {
     @OneToOne(mappedBy = "companyDetail", fetch = FetchType.LAZY) /**양방향 관계추가 주인 변경*/
     private Company company;
 
+    @Column(length = 1000)
     private String info; /** 기업 정보 추가*/
 
     private String blog;//기술블로그
 
+    @Column(length = 1000)
     private  String welfare;//직원복지
 
+    @Column(length = 1000)
     private  String etc;//기타사항
 
     private String location;//상세 주소

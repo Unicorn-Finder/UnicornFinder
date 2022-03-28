@@ -88,5 +88,17 @@ public class Company extends BaseTimeEntity{
         this.location = location;
     }
 
+    //수정을 위한 메서드
+    public void changeCompany(String name, String product, String invest, Round round, String domain, int employee, Location location, int count) {
+        this.name = name;
+        this.product = product;
+        this.invest = invest;
+        this.round = round;
+        this.domain = domain;
+        this.employee = employee;
+        this.location = location;
+        this.count = count;
+    }
+
 
 }

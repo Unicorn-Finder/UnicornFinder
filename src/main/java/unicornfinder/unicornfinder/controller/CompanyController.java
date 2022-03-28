@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import unicornfinder.unicornfinder.config.auth.dto.SessionMember;
@@ -67,10 +68,17 @@ public class CompanyController {
         companyForm.setName(company.getName());
         companyForm.setProduct(company.getProduct());
         companyForm.setRound(company.getRound());
+        companyForm.setCount(company.getCount());
 
 
         model.addAttribute("companyForm", companyForm);
 
         return "companies/companyForm";
+    }
+
+    @PostMapping("/companies/{companyId}/editCompany")
+    public String updateCompanyDetail(@PathVariable Long companyId, @ModelAttribute CompanyForm companyForm){
+        companyService.updateCompany(companyId, companyForm);
+        return "redirect:/companies/"+companyId;
     }
 }
