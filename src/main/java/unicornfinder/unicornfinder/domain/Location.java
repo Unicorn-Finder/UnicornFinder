@@ -9,5 +9,6 @@ public enum Location {
     SEOUL_MAPO,
     SEOUL_JUNG_GU,
     GYEONGGI,
-    GYEONGGI_SEONGNAM
+    GYEONGGI_SEONGNAM,
+    ETC
 }
